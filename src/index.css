@@ -1,0 +1,279 @@
+/* Example MainContent.css */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure that the body takes at least the full viewport height */
+}
+
+header {
+  display: flex;
+  align-items: center;
+  background-color: antiquewhite;
+  color: chocolate;
+  padding: 10px;
+  text-align: center;
+  font-family: cursive;
+}
+
+header h1 {
+  flex-grow: 1;
+  margin: 0;
+  font-size: 24px;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  color: chocolate;
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.cart-button{
+    background: none;
+    border: none;
+    color: chocolate;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 50px;
+}
+
+.cart-count-badge {
+  position: absolute;
+  background-color: chocolate;
+  color: antiquewhite;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  margin-top: -10px;
+  margin-left: -5px;
+}
+
+
+
+.sidebar {
+  width: 230px;
+  background-color: #fde2c0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 10px;
+  transform: translateX(-250px); /* Start hidden off-screen */
+  transition: transform 0.3s ease;
+  user-select: none;
+  color: chocolate;
+}
+
+.sidebar.open {
+  transform: translateX(0); /* Slide in */
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+
+.sidebar li:hover {
+  background-color: rgb(241, 201, 148);
+  cursor: pointer;
+}
+
+.social-icons {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  font-size: 24px;
+  color:chocolate;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: black; /* Change to your preferred hover color */
+}
+
+main {
+  padding: 20px;
+  margin-left: 150px; /* Default margin-left */
+  transition: margin-left 0.3s ease; /* Smooth transition for margin */
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 60px; /* Ensure space for footer (adjust if needed) */
+  min-height: 100vh;
+  user-select: none;
+}
+
+main.shifted {
+  margin-left: 350px; /* Adjust for sidebar width */
+}
+
+.item-container {
+  flex: 1 0 21%; /* Ensure 4 items in a row with margins */
+  margin: 1%;
+  box-sizing: border-box;
+  max-width: calc(25% - 45px); /* Adjust based on desired margins */
+  border-radius: 20px;
+  color: rgb(224, 170, 99);
+}
+
+.item-container:hover {
+  cursor: pointer;
+  background-color: #e7e7e7;
+}
+
+.item-container p {
+  font-size: 13px;
+}
+
+.item-container img {
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+.item-container img,
+h3,
+p {
+  margin-left: 20px;
+}
+
+.controls{
+  align-self:center;
+  margin-top: 20px;
+}
+
+.controls input{
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.controls select{
+  margin-left: 20px;
+  border-radius: 20px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .item-container {
+    flex: 1 0 30%; /* 3 items per row */
+    max-width: calc(33.33% - 20px);
+  }
+  
+  .header,.footer{
+    max-width: 1200px;
+  }
+
+  .social-icons{
+    margin-bottom: 80px;
+  }
+}
+
+@media (max-width: 992px) {
+  .item-container {
+    flex: 1 0 45%; /* 2 items per row */
+    max-width: calc(50% - 20px);
+  }
+
+  main.shifted {
+    margin-left: 250px; /* Adjust for sidebar width */
+  }
+
+  .sidebar {
+    width: 230px;
+  }
+
+  .header,.footer{
+    max-width: 992px;
+  }
+
+  .social-icons{
+    margin-bottom: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  main {
+    margin-left: 80px; /* Adjust for smaller sidebar */
+    padding: 10px;
+    padding-bottom: 60px; /* Ensure space for footer (adjust if needed) */
+  }
+
+  header,
+  footer {
+    padding: 10px;
+    max-width:768px;
+  }
+
+  .item-container {
+    flex: 1 0 100%; /* 1 item per row */
+    max-width: 100%;
+  }
+
+  .social-icons{
+    margin-bottom: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1,
+  footer p {
+    font-size: 18px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+
+  .header,.footer{
+    max-width: 480px;
+  }
+
+  .social-icons{
+    margin-bottom: 80px;
+  }
+}
+
+@media (max-width: 360px) {
+  .toggle-button {
+    font-size: 20px;
+  }
+
+  header h1 {
+    font-size: 20px;
+  }
+
+  .header,.footer{
+    max-width: 360px;
+  }
+
+  .social-icons{
+    margin-bottom: 80px;
+  }
+}
