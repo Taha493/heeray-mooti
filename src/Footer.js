@@ -6,7 +6,7 @@ function Footer() {
   return (
     <footer className="footer">
       <p>© H & Y Collections. All rights reserved 2024.</p>
-      <p>Email: handycollections6@gmail.com</p>
+      <p>Email: hycollection6@gmail.com</p>
       <div className="icons">
         <a href="https://www.instagram.com/handycollection2024/" target="_blank" rel="noopener noreferrer" className="iconLink">
           <FaInstagram />

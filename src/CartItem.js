@@ -2,7 +2,7 @@ import React from 'react';
 import './cart.css';
 
 const CartItem = ({ article, onRemove, quantity, updateQuantity }) => {
-  const subtotal = article.price * quantity;
+  const subtotal = (article.price - article.discount) * quantity;
 
   const handleDecrement = () => {
     if (quantity === 1) return;
@@ -20,8 +20,8 @@ const CartItem = ({ article, onRemove, quantity, updateQuantity }) => {
         <div className="item-info">
           <h4 className="item-name">{article.name}</h4>
           <p className="item-quantity">Quantity: {quantity}</p>
-          <p className="item-price">Price: PKR {article.price}</p>
-          <p className="item-subtotal">Subtotal: PKR {subtotal.toFixed(2)}</p>
+          <p className="item-price">Price: PKR {(article.price - article.discount).toLocaleString()}/-</p>
+          <p className="item-subtotal">Subtotal: PKR {subtotal.toLocaleString()}/-</p>
           <div className="quantity">
             <button onClick={handleDecrement} className="quantityButton">
               -

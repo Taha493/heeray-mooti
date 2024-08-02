@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
@@ -6,283 +6,78 @@ import ItemList from './ItemList';
 import ItemDetails from './ItemDetails';
 import CartPage from './CartPage';
 import CheckoutPage from './CheckoutPage';
-
-const itemData=[
-    {
-        name: "Rajwari Ring",
-        id: Math.floor(Math.random()*10000)+1,
-        description: "Adjustable ring, rajwari design, red stone",
-        price: 2000,
-        category: "Ring",
-        img: "https://razajewellers.pk/wp-content/uploads/2024/02/IMG_1333-800x800.jpg"
-    }
-    ,
-
-    {
-        name: "Rajwari Ring",
-        id: Math.floor(Math.random()*10000)+1,
-        description: "Adjustable ring, rajwari design, red stone",
-        price: 2000,
-        category: "Ring",
-        img: "https://razajewellers.pk/wp-content/uploads/2024/02/IMG_1333-800x800.jpg"
-    },
-
-    {
-        name: "Rajwari Ring",
-        id: Math.floor(Math.random()*10000)+1,
-        description: "Adjustable ring, rajwari design, red stone",
-        price: 2000,
-        category: "Ring",
-        img: "https://razajewellers.pk/wp-content/uploads/2024/02/IMG_1333-800x800.jpg"
-    },
-    {
-        name: "Rajwari Ring",
-        id: Math.floor(Math.random()*10000)+1,
-        description: "Adjustable ring, rajwari design, red stone",
-        price: 2000,
-        category: "Ring",
-        img: "https://razajewellers.pk/wp-content/uploads/2024/02/IMG_1333-800x800.jpg"
-    },
-    {
-        name: "Rajwari Ring",
-        id: Math.floor(Math.random()*10000)+1,
-        description: "Adjustable ring, rajwari design, red stone",
-        price: 2000,
-        category: "Ring",
-        img: "https://razajewellers.pk/wp-content/uploads/2024/02/IMG_1333-800x800.jpg"
-    }
-    ,
-    {
-        name: "Anti Tarnish Bracelet",
-        id: Math.floor(Math.random()*10000)+1,
-        description: "White Anti Tarnish Bracelet, Adjustable, Attractive",
-        price: 500,
-        category: "Bracelet",
-        img: "https://gypsyjewellery.in/wp-content/uploads/2023/12/IMG_20231018_164150.webp"
-    }
-    ,
-    {
-      name: "Anti Tarnish Bracelet",
-      id: Math.floor(Math.random()*10000)+1,
-      description: "White Anti Tarnish Bracelet, Adjustable, Attractive",
-      price: 500,
-      category: "Bracelet",
-      img: "https://gypsyjewellery.in/wp-content/uploads/2023/12/IMG_20231018_164150.webp"
-  }
-  ,
-  {
-    name: "Anti Tarnish Bracelet",
-    id: Math.floor(Math.random()*10000)+1,
-    description: "White Anti Tarnish Bracelet, Adjustable, Attractive",
-    price: 500,
-    category: "Bracelet",
-    img: "https://gypsyjewellery.in/wp-content/uploads/2023/12/IMG_20231018_164150.webp"
-}
-,
-{
-  name: "Anti Tarnish Bracelet",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "White Anti Tarnish Bracelet, Adjustable, Attractive",
-  price: 500,
-  category: "Bracelet",
-  img: "https://gypsyjewellery.in/wp-content/uploads/2023/12/IMG_20231018_164150.webp"
-}
-,
-{
-  name: "Anti Tarnish Bracelet",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "White Anti Tarnish Bracelet, Adjustable, Attractive",
-  price: 500,
-  category: "Bracelet",
-  img: "https://gypsyjewellery.in/wp-content/uploads/2023/12/IMG_20231018_164150.webp"
-}
-,
-{
-  name: "Rajwadi Earring",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Ear Ring, Adjustable, Attractive",
-  price: 1000,
-  category: "Ear Ring",
-  img: "https://divyamani.com/uploads/product_sub/ERRJ22438BLGT-P.JPG"
-}
-,
-{
-  name: "Rajwadi Earring",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Ear Ring, Adjustable, Attractive",
-  price: 1000,
-  category: "Ear Ring",
-  img: "https://divyamani.com/uploads/product_sub/ERRJ22438BLGT-P.JPG"
-},
-{
-  name: "Rajwadi Earring",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Ear Ring, Adjustable, Attractive",
-  price: 1000,
-  category: "Ear Ring",
-  img: "https://divyamani.com/uploads/product_sub/ERRJ22438BLGT-P.JPG"
-},
-{
-  name: "Rajwadi Earring",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Ear Ring, Adjustable, Attractive",
-  price: 1000,
-  category: "Ear Ring",
-  img: "https://divyamani.com/uploads/product_sub/ERRJ22438BLGT-P.JPG"
-},
-{
-  name: "Rajwadi Earring",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Ear Ring, Adjustable, Attractive",
-  price: 1000,
-  category: "Ear Ring",
-  img: "https://divyamani.com/uploads/product_sub/ERRJ22438BLGT-P.JPG"
-},
-{
-  name: "Rajwadi Earring",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Ear Ring, Adjustable, Attractive",
-  price: 1000,
-  category: "Ear Ring",
-  img: "https://divyamani.com/uploads/product_sub/ERRJ22438BLGT-P.JPG"
-},
-{
-  name: "Rajwadi Earring",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Ear Ring, Adjustable, Attractive",
-  price: 1000,
-  category: "Ear Ring",
-  img: "https://divyamani.com/uploads/product_sub/ERRJ22438BLGT-P.JPG"
-}
-, 
-{
-  name: "Rajwadi Jewellery Set",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Set, Adjustable, Attractive",
-  price: 5000,
-  category: "Set",
-  img: "https://m.media-amazon.com/images/I/71gVFWbBh6L._SY695_.jpg"
-}
-, 
-{
-  name: "Rajwadi Jewellery Set",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Set, Adjustable, Attractive",
-  price: 5000,
-  category: "Set",
-  img: "https://m.media-amazon.com/images/I/71gVFWbBh6L._SY695_.jpg"
-}, 
-{
-  name: "Rajwadi Jewellery Set",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Set, Adjustable, Attractive",
-  price: 5000,
-  category: "Set",
-  img: "https://m.media-amazon.com/images/I/71gVFWbBh6L._SY695_.jpg"
-}, 
-{
-  name: "Rajwadi Jewellery Set",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Set, Adjustable, Attractive",
-  price: 5000,
-  category: "Set",
-  img: "https://m.media-amazon.com/images/I/71gVFWbBh6L._SY695_.jpg"
-}, 
-{
-  name: "Rajwadi Jewellery Set",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Set, Adjustable, Attractive",
-  price: 5000,
-  category: "Set",
-  img: "https://m.media-amazon.com/images/I/71gVFWbBh6L._SY695_.jpg"
-}, 
-{
-  name: "Rajwadi Jewellery Set",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Set, Adjustable, Attractive",
-  price: 5000,
-  category: "Set",
-  img: "https://m.media-amazon.com/images/I/71gVFWbBh6L._SY695_.jpg"
-}, 
-{
-  name: "Rajwadi Jewellery Set",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Set, Adjustable, Attractive",
-  price: 5000,
-  category: "Set",
-  img: "https://m.media-amazon.com/images/I/71gVFWbBh6L._SY695_.jpg"
-}, 
-{
-  name: "Rajwadi Jewellery Set",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Set, Adjustable, Attractive",
-  price: 5000,
-  category: "Set",
-  img: "https://m.media-amazon.com/images/I/71gVFWbBh6L._SY695_.jpg"
-}, 
-{
-  name: "Rajwadi Jewellery Set",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Set, Adjustable, Attractive",
-  price: 5000,
-  category: "Set",
-  img: "https://m.media-amazon.com/images/I/71gVFWbBh6L._SY695_.jpg"
-}, 
-{
-  name: "Rajwadi Jewellery Set",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Set, Adjustable, Attractive",
-  price: 5000,
-  category: "Set",
-  img: "https://m.media-amazon.com/images/I/71gVFWbBh6L._SY695_.jpg"
-}, 
-{
-  name: "Rajwadi Jewellery Set",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Set, Adjustable, Attractive",
-  price: 5000,
-  category: "Set",
-  img: "https://m.media-amazon.com/images/I/71gVFWbBh6L._SY695_.jpg"
-}, 
-{
-  name: "Rajwadi Jewellery Set",
-  id: Math.floor(Math.random()*10000)+1,
-  description: "Rajwadi Set, Adjustable, Attractive",
-  price: 5000,
-  category: "Set",
-  img: "https://m.media-amazon.com/images/I/71gVFWbBh6L._SY695_.jpg"
-}
-]
-
+import Notification from './Notification';
+import getItems from './ItemData';
+// import {items} from './ItemData';
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [isOpenCart, setIsOpenCart] = useState(false);
-  const [cart, setCart] = useState([]);
-  const [quantity, setQuantity] = useState(1);
+  const [cart, setCart] = useState(() => {
+    const savedCart = JSON.parse(localStorage.getItem('cart'));
+    return savedCart || [];
+  });  const [quantity, setQuantity] = useState(1);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [notification, setNotification] = useState(null);
+  const [itemData, setItems] = useState([]);
 
+  useEffect(() => {
+    async function fetchData() {
+      const fetchedItems = await getItems();
+      console.log('Fetched Items:', fetchedItems);
+      setItems(fetchedItems);
+    }
+    fetchData();
+  }, []);
 
+  useState(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+  function ResetToInitialState()
+  {
+    setIsCheckoutOpen(false);
+    setIsOpenCart(false);
+    setIsSidebarOpen(false);
+    setQuantity(1);
+    setSelectedCategory(null);
+    setSelectedItem(null);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
   function handleOpenCart()
   {
     setIsCheckoutOpen(false);
     setSelectedCategory(null);
     setIsOpenCart(true);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
   function handleAddToCart(item, quantity) {
     const existingItem = cart.find(article => article.id === item.id);
+    let updatedCart;
+  
     if (existingItem) {
-      setCart(cart.map(article =>
+      updatedCart = cart.map(article =>
         article.id === item.id
           ? { ...article, quantity: article.quantity + quantity }
           : article
-      ));
+      );
     } else {
-      setCart([...cart, { ...item, quantity }]);
+      updatedCart = [...cart, { ...item, quantity }];
     }
-
+  
+    setCart(updatedCart);
     setQuantity(1);
+    setNotification(`${item.name} has been added to the cart 🛒`);
+  
+    // Save updated cart to local storage
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
   }
 
   function handleCheckoutPage()
@@ -290,12 +85,19 @@ function App() {
     setIsOpenCart(false);
     setSelectedCategory(false);
     setIsCheckoutOpen(true);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const clearCart = () => {
+    setCart([]);
+  };
   const handleItemClick = (item) => {
     setSelectedItem(item);
     setSelectedCategory(item.category);
@@ -313,6 +115,7 @@ function App() {
 
   const handleCategorySelect = (category) => {
     setSelectedItem(null);
+    
     setSelectedCategory(category);
     setIsCheckoutOpen(false);
     setIsOpenCart(false);
@@ -329,12 +132,20 @@ function App() {
 
     return (
       <div className="App">
-        <Header toggleSidebar={toggleSidebar} openCart={handleOpenCart} cart={cart} />
+        <Header 
+          toggleSidebar={toggleSidebar} 
+          openCart={handleOpenCart} 
+          cart={cart} 
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          ResetToInitialState={ResetToInitialState}
+          isSaleLive={itemData.some(item => item.discount > 0)}
+        />
         <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} onCategorySelect={handleCategorySelect} />
         {isCheckoutOpen ? (
-          <CheckoutPage />
+          <CheckoutPage cart={cart} clearCart={clearCart} ResetToInitialState={ResetToInitialState}/>
         ) : isOpenCart ? (
-          <CartPage cart={cart} setCart={setCart} isOpen={isSidebarOpen} OpenCheckout={handleCheckoutPage} />
+          <CartPage cart={cart} setCart={setCart} isOpen={isSidebarOpen} OpenCheckout={handleCheckoutPage} ResetToInitialState={ResetToInitialState}/>
         ) : selectedItem ? (
           <ItemDetails
             item={selectedItem}
@@ -347,11 +158,25 @@ function App() {
             setQuantity={setQuantity}
           />
         ) : (
-          <ItemList isSidebarOpen={isSidebarOpen} onItemClick={handleItemClick} items={filteredItems} />
+          <ItemList 
+            isSidebarOpen={isSidebarOpen} 
+            onItemClick={handleItemClick} 
+            items={filteredItems?.filter(item => item.name.toLowerCase().includes(searchQuery.toLowerCase()))} 
+            AddtoCart={handleAddToCart}
+            category={selectedCategory}
+          />
         )}
         <Footer />
+        {notification && (
+        <Notification 
+          message={notification} 
+          onClose={() => setNotification(null)} 
+          onOpenCart={handleOpenCart}
+        />
+      )}
       </div>
     );
-}
+  }
 
 export default App;
+

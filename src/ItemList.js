@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Item from './Item';
 
-function ItemList({ items, isSidebarOpen, onItemClick }) {
+function ItemList({ items, isSidebarOpen, onItemClick, AddtoCart, category}) {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOrder, setSortOrder] = useState('none'); // 'none', 'priceLowToHigh', 'priceHighToLow'
 
@@ -10,15 +10,14 @@ function ItemList({ items, isSidebarOpen, onItemClick }) {
   };
 
   const handleSortChange = (e) => {
-    setSortOrder(e.target.value);
+    setSortOrder(e.target.value); 
   };
 
-  const filteredItems = items
-    .filter((item) =>
+  const filteredItems = items?.filter((item) =>
       item.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-  const sortedItems = filteredItems.sort((a, b) => {
+  const sortedItems = filteredItems?.sort((a, b) => {
     if (sortOrder === 'priceLowToHigh') {
       return a.price - b.price;
     }
@@ -44,8 +43,8 @@ function ItemList({ items, isSidebarOpen, onItemClick }) {
         </select>
       </div>
     <main className={isSidebarOpen ? 'shifted' : ''}>
-      {sortedItems.map((item) => (
-        <Item key={item.id} item={item} onItemClick={onItemClick} />
+      {sortedItems?.map((item) => (
+        <Item key={item.id} item={item} onItemClick={onItemClick} AddtoCart={AddtoCart}/>
       ))}
     </main>
       </>

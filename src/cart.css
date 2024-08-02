@@ -2,12 +2,14 @@
     padding: 20px;
     transition: margin-left 0.3s ease; /* Smooth transition for shifting the cart page */
     min-height: 100vh;
+    margin-top: 100px;
   }
   
   .cart-page h2 {
     text-align: center;
     font-size: 24px;
   }
+
   
   .cart-items {
     display: flex;
@@ -70,6 +72,9 @@
   .cart-summary {
     margin-top: 20px;
     text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
   }
   
   .cart-summary button {
@@ -89,6 +94,20 @@
   .empty-cart-message{
     text-align: center;
     min-height: 100vh;
+    margin-top: 300px;
+  }
+
+  .empty-cart-message button{
+    background-color:#218838;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  .empty-cart-message button:hover{
+    background-color: #124e1f;
   }
   
   /* Responsive Styles */

@@ -23,6 +23,7 @@ footer {
     max-width: 1200px;
     margin: 0 auto;
     transition: margin-left 0.6s ease;
+    margin-top: 100px;
     /* Smooth transition for margin-left */
 }
 
@@ -61,7 +62,7 @@ footer {
 
 .itemImage {
     max-width: 100%;
-    max-height: 300px;
+    max-height: 400px;
     margin-bottom: 20px;
 }
 
@@ -71,8 +72,12 @@ footer {
     margin-left: 20px;
 }
 
+.itemInfo p{
+    margin-left: -5px;
+}
 .itemInfo h1 {
     margin-top: 0;
+    color: chocolate;
 }
 
 .quantity {
@@ -101,10 +106,16 @@ footer {
 
 .addToCartButton {
     padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
+    background-color: chocolate;
+    color: antiquewhite;
     border: none;
     cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.addToCartButton:hover{
+background-color: rgb(176, 89, 27);
 }
 
 .relatedItems {
@@ -135,30 +146,50 @@ footer {
     }
 
     .itemImage {
-        margin-right: 20px;
+        margin-right: 30px;
         margin-bottom: 0;
+        width: 90%;
+        height: 100%;
     }
 
     .itemInfo {
         text-align: left;
+        margin-right: 40px;
     }
 
     .quantity {
         justify-content: flex-start;
+    }
+    .relatedItemsList{
+        margin-right: 50px;
+    }
+    .backButton{
+        font-size: 24px;
     }
 }
 
 @media (max-width: 599px) {
     .itemInfo {
         text-align: center;
+        margin-right: 40px;
+    }
+    .backButton{
+        font-size: 24px;
     }
 
     .itemImage {
-        height: 200px;
-        width: 200px;
+        margin-right: 30px;
+        width: 90%;
+        height: 100%;
+    }
+    .backButton{
+        font-size: 18px;
     }
 
     .relatedItemsList {
-        margin-left: 100px;
+        margin-right: 50px;
+    }
+    .backButton{
+        font-size: 24px;
     }
 }

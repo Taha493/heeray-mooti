@@ -12,8 +12,10 @@ const ItemDetails = ({ item, onBack, onAddToCart, items, onItemClick, isSidebarO
     setQuantity((prevQuantity) => prevQuantity + 1);
   }
 
+  const relatedItems = items.filter(relatedItem => relatedItem.id !== item.id);
+
   return (
-    <div className={isSidebarOpen?"container-shifted":"container"}>
+    <div className={isSidebarOpen ? "container-shifted" : "container"}>
       <button className="backButton" onClick={onBack}>
         &larr;
       </button>
@@ -21,9 +23,14 @@ const ItemDetails = ({ item, onBack, onAddToCart, items, onItemClick, isSidebarO
         <img src={item.img} alt={item.name} className="itemImage" width="600px" height="300px" />
         <div className="itemInfo">
           <h1>{item.name}</h1>
-          <p>{item.description}</p>
-          <p>Price: PKR {item.price}/-</p>
-          <p>Item Code: {item.id}</p>
+          {item.description && <p>{item.description}</p>}
+          {
+        item.discount > 0?
+        <p>Price: <span style={{textDecoration: "line-through"}}>PKR {item.price.toLocaleString()} </span>
+      <span>&nbsp;PKR {(item.price - item.discount).toLocaleString() }/-</span></p>
+      : <p>PKR {(item.price - item.discount).toLocaleString()}/-</p>
+      
+      }
           <p>Category: {item.category}</p>
           <div className="quantity">
             <button onClick={handleDecrement} className='quantityButton'>-</button>
@@ -35,16 +42,21 @@ const ItemDetails = ({ item, onBack, onAddToCart, items, onItemClick, isSidebarO
           </button>
         </div>
       </div>
-      <div className="relatedItems">
-        <h2>Related Items</h2>
-        <div className="relatedItemsList">
-          {items
-            .filter(relatedItem => relatedItem.id !== item.id)
-            .map((relatedItem) => (
-              <Item key={relatedItem.id} item={relatedItem} onItemClick={() => onItemClick(relatedItem)} />
+      {relatedItems.length > 0 && (
+        <div className="relatedItems">
+          <h2>Related Items</h2>
+          <div className="relatedItemsList">
+            {relatedItems.map((relatedItem) => (
+              <Item
+                key={relatedItem.id}
+                item={relatedItem}
+                onItemClick={() => onItemClick(relatedItem)}
+                AddtoCart={onAddToCart}
+              />
             ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

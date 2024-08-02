@@ -2,15 +2,45 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  /* font-family: Arial, sans-serif; */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+
 }
 
 .App {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Ensure that the body takes at least the full viewport height */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+.top-bar{
+  z-index: 1001;
+  text-align: center;
+  background-color: chocolate;
+  color: white;
+  height: 30px;
+  max-width: 100%;
+}
+/* .top-bar-content {
+  display: inline-block;
+  position: absolute;
+  margin-top: 0px;
+  white-space: nowrap;
+  animation: scroll-left 30s linear infinite;
+} */
+ 
+.top-bar-content{
+  margin-top: 3px;
+}
+@keyframes scroll-left {
+  from {
+      transform: translateX(100%);
+  }
+  to {
+      transform: translateX(-180%);
+  }
+}
 header {
   display: flex;
   align-items: center;
@@ -18,7 +48,12 @@ header {
   color: chocolate;
   padding: 10px;
   text-align: center;
-  font-family: cursive;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
 }
 
 header h1 {
@@ -34,6 +69,11 @@ header h1 {
   font-size: 24px;
   cursor: pointer;
   margin-right: 10px;
+  transition: color 0.3s ease;
+}
+
+.toggle-button:hover{
+  color: black;
 }
 
 .cart-button{
@@ -43,6 +83,41 @@ header h1 {
     font-size: 24px;
     cursor: pointer;
     margin-right: 50px;
+    transition: color 0.3s ease;
+}
+
+.cart-button:hover{
+  color: black;
+}
+.iconButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: chocolate;
+  transition: color 0.3s ease;
+}
+
+.iconButton:hover{
+  color: black;
+}
+
+.searchInput {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-left: 10px;
+  flex: 1; /* Allow search input to grow */
+  max-width: 200px; /* Prevent excessive growth on larger screens */
+}
+
+.item-container button{
+    background: none;
+    border: none;
+    color: chocolate;
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 15px;
 }
 
 .cart-count-badge {
@@ -70,6 +145,7 @@ header h1 {
   transition: transform 0.3s ease;
   user-select: none;
   color: chocolate;
+  z-index: 1001;
 }
 
 .sidebar.open {
@@ -90,6 +166,7 @@ header h1 {
 .sidebar li:hover {
   background-color: rgb(241, 201, 148);
   cursor: pointer;
+  color: black;
 }
 
 .social-icons {
@@ -113,13 +190,13 @@ header h1 {
 
 main {
   padding: 20px;
-  margin-left: 150px; /* Default margin-left */
   transition: margin-left 0.3s ease; /* Smooth transition for margin */
   display: flex;
   flex-wrap: wrap;
   padding-bottom: 60px; /* Ensure space for footer (adjust if needed) */
   min-height: 100vh;
   user-select: none;
+  overflow: scroll;
 }
 
 main.shifted {
@@ -127,14 +204,16 @@ main.shifted {
 }
 
 .item-container {
-  flex: 1 0 21%; /* Ensure 4 items in a row with margins */
+  flex: 1 0 21%; /* Default: 4 items in a row */
   margin: 1%;
   box-sizing: border-box;
-  max-width: calc(25% - 45px); /* Adjust based on desired margins */
+  max-width: 25%; /* Adjusted margin */
   border-radius: 20px;
   color: rgb(224, 170, 99);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content */
 }
-
 .item-container:hover {
   cursor: pointer;
   background-color: #e7e7e7;
@@ -142,11 +221,15 @@ main.shifted {
 
 .item-container p {
   font-size: 13px;
+  color: #000;
 }
-
 .item-container img {
+  width: 100%;
+  height: 300px; /* Fixed height for consistency */
+  object-fit: cover; /* Ensure the image covers the container without distortion */
   border-radius: 20px;
-  margin-top: 10px;
+  margin-top: 5px;
+  margin-right: 20px;
 }
 
 .item-container img,
@@ -155,9 +238,16 @@ p {
   margin-left: 20px;
 }
 
+.item-container p, h3 {
+  margin: 10px;
+  text-align: center; /* Center text */
+  font-size: 14px; /* Ensure readability */
+}
+
+
 .controls{
   align-self:center;
-  margin-top: 20px;
+  margin-top: 100px;
 }
 
 .controls input{
@@ -175,8 +265,11 @@ p {
 @media (max-width: 1200px) {
   .item-container {
     flex: 1 0 30%; /* 3 items per row */
-    max-width: calc(33.33% - 20px);
+    max-width: 100%;
+    right: 40px;
   }
+
+  .top-bar{width: 100%}
   
   .header,.footer{
     max-width: 1200px;
@@ -190,8 +283,30 @@ p {
 @media (max-width: 992px) {
   .item-container {
     flex: 1 0 45%; /* 2 items per row */
-    max-width: calc(50% - 20px);
+    max-width: 100%;
+    right: 40px;
+
   }
+  header{
+    height: 70px;
+    position: absolute;
+  }
+  .top-bar-content {
+    display: inline-block;
+    position: absolute;
+    white-space: nowrap;
+    animation: scroll-left 23s linear infinite;
+  }
+  @keyframes scroll-left {
+    from {
+        transform: translateX(30%);
+    }
+    to {
+        transform: translateX(-130%);
+    }
+  }
+  .top-bar{height: 30px;}
+
 
   main.shifted {
     margin-left: 250px; /* Adjust for sidebar width */
@@ -214,13 +329,14 @@ p {
   .sidebar {
     width: 200px;
   }
+  .top-bar{width: 100%}
+
 
   .sidebar.open {
     transform: translateX(0);
   }
 
   main {
-    margin-left: 80px; /* Adjust for smaller sidebar */
     padding: 10px;
     padding-bottom: 60px; /* Ensure space for footer (adjust if needed) */
   }
@@ -247,6 +363,9 @@ p {
     font-size: 18px;
   }
 
+  .top-bar{width: 100%}
+
+
   button {
     font-size: 14px;
   }
@@ -258,12 +377,21 @@ p {
   .social-icons{
     margin-bottom: 80px;
   }
+
+  .item-container{
+    margin-left: 10px;
+
+  }
+  
 }
 
 @media (max-width: 360px) {
   .toggle-button {
     font-size: 20px;
   }
+
+  .top-bar{width: 100%}
+
 
   header h1 {
     font-size: 20px;
@@ -275,5 +403,101 @@ p {
 
   .social-icons{
     margin-bottom: 80px;
+  }
+  .item-container{
+    margin-left: 10px;
+  }
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+  .searchInput {
+    max-width: 150px;
+  }
+  
+}
+
+@media (max-width: 992px) {
+  .searchInput {
+    max-width: 120px;
+  }
+
+  .iconButton {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .searchInput {
+    max-width: 100px;
+  }
+
+  .iconButton {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchInput {
+    max-width: 80px;
+    padding: 6px;
+  }
+
+  .iconButton {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .searchInput {
+    max-width: 70px;
+    padding: 5px;
+  }
+
+  .iconButton {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .item-container {
+    flex: 1 0 30%; /* 3 items per row */
+    max-width: calc(33.33% - 20px); /* Adjust based on margin */
+  }
+}
+
+@media (max-width: 992px) {
+  .item-container {
+    flex: 1 0 45%; /* 2 items per row */
+    max-width: calc(50% - 20px); /* Adjust based on margin */
+  }
+}
+
+@media (max-width: 768px) {
+  .item-container {
+    flex: 1 0 100%; /* 1 item per row */
+    max-width: calc(100% - 20px); /* Full width */
+  }
+
+  .item-container img {
+    width: 100%;
+  }
+
+  .item-container p, h3 {
+    font-size: 16px; /* Larger text for better readability */
+  }
+}
+
+@media (max-width: 480px) {
+  .item-container {
+    margin: 0; /* Remove margin */
+  }
+
+  .item-container img {
+    height: auto; /* Ensure images scale properly */
+  }
+
+  .item-container p, h3 {
+    font-size: 18px; /* Larger text for better readability */
   }
 }

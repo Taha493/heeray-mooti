@@ -1,21 +1,23 @@
 import CartItem from './CartItem';
 import CartSummary from './CartSummary';
 
-function CartPage({ cart, setCart, isOpen, OpenCheckout}) {
+function CartPage({ cart, setCart, isOpen, OpenCheckout, ResetToInitialState}) {
   const removeItem = (id) => {
-    setCart(cart.filter((item) => item.id!== id));
-  };
+    const updatedCart = cart.filter((item) => item.id !== id);
+    setCart(updatedCart);
 
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
   const updateQuantity = (id, newQuantity) => {
-    setCart(
-      cart.map((item) =>
-        item.id === id? {...item, quantity: newQuantity } : item
-      )
-    );
+    const updatedCart =   cart.map((item) =>
+      item.id === id? {...item, quantity: newQuantity } : item);
+    setCart(updatedCart);
+
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
 
   const calculateTotal = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    return cart.reduce((total, item) => total + (item.price - item.discount) * item.quantity, 0);
   };
 
   return (
@@ -33,12 +35,16 @@ function CartPage({ cart, setCart, isOpen, OpenCheckout}) {
             />
           ))}
         </div>
-        <CartSummary total={calculateTotal()} OpenCheckout={OpenCheckout}/>
+        <CartSummary total={calculateTotal()} OpenCheckout={OpenCheckout} cart={cart}/>
       </div>
     ) : (
-      <h2 className="empty-cart-message">
-        OOPS! The cart is empty. Shop something and come back
+      <div className='empty-cart-message'>
+      <h2>
+        Your cart is empty. Let's change that.
       </h2>
+      <button onClick={ResetToInitialState}>Continue Shopping</button>
+      <p>Press the button to continue shopping.</p>
+      </div>
     )
   );
 };

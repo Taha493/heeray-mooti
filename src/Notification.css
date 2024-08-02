@@ -1,0 +1,58 @@
+.notification {
+    position: fixed;
+    top: 10px; /* Moved lower */
+    right: 10px; /* Moved to the left */
+    background-color: chocolate; /* Green */
+    color: white;
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    z-index: 1000; /* Ensure it appears above other content */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(-20px); /* Initial position */
+    z-index: 10000;
+  }
+  
+  .notification.show {
+    opacity: 1; /* Show notification */
+    transform: translateY(0); /* Move to original position */
+  }
+  
+  .notification::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: #fff; /* White running line */
+    animation: runLine 3s linear infinite; /* Adjust timing as needed */
+  }
+  
+  @keyframes runLine {
+    0% { left: 0; width: 0; }
+    50% { width: 100%; }
+    100% { left: 100%; width: 0; }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .notification {
+      top: 10px; /* Adjusted position */
+      right: 20px; /* Adjusted position */
+      padding: 12px;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .notification {
+      top: 10px; /* Adjusted position */
+      right: 15px; /* Adjusted position */
+      padding: 10px;
+      font-size: 12px;
+    }
+  }
+  
