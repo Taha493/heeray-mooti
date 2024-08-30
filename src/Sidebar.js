@@ -24,13 +24,13 @@ function Sidebar({ isOpen, toggleSidebar, onCategorySelect }) {
 
       </ul>
       <div className="social-icons">
-      <a href="https://www.instagram.com/handycollection2024/" target="_blank" rel="noopener noreferrer" className="iconLink">
+      <a href="https://www.instagram.com/heeray_mooti/" target="_blank" rel="noopener noreferrer" className="iconLink">
           <FaInstagram />
         </a>
-        <a href="https://wa.me/+923025975556" target="_blank" rel="noopener noreferrer" className="iconLink">
+        <a href="https://wa.me/+923377773131" target="_blank" rel="noopener noreferrer" className="iconLink">
           <FaWhatsapp />
         </a>
-        <a href="mailto:hycollection6@gmail.com" className="iconLink">
+        <a href="mailto:mootiheeray@gmail.com" className="iconLink">
           <FaEnvelope />
         </a>
       </div>
