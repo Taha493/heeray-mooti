@@ -14,12 +14,12 @@ function Sidebar({ isOpen, toggleSidebar, onCategorySelect }) {
       </button>
       <ul>
         <li onClick={() => handleCategoryClick(null)}>Home</li>
-        <li onClick={() => handleCategoryClick('Ring')}>Rings</li>
-        <li onClick={() => handleCategoryClick('Bracelet')}>Bracelets</li>
-        <li onClick={() => handleCategoryClick('Chain')}>Chains</li>
-        <li onClick={() => handleCategoryClick('Set')}>Sets</li>
-        <li onClick={() => handleCategoryClick('Jhumka')}>Jhumkas</li>
-        <li onClick={() => handleCategoryClick('Earstud')}>Ear Studs</li>
+        <li onClick={() => handleCategoryClick('Handmade Ring')}>Handmade Rings</li>
+        <li onClick={() => handleCategoryClick('Handmade Earring')}>Handmade Earrings</li>
+        <li onClick={() => handleCategoryClick('Handmade Set')}>Handmade Sets</li>
+        <li onClick={() => handleCategoryClick('Premade Ring')}>Premade Rings</li>
+        <li onClick={() => handleCategoryClick('Premade Earring')}>Premade Earrings</li>
+        <li onClick={() => handleCategoryClick('Premade Chain')}>Premade Chains</li>
 
 
       </ul>

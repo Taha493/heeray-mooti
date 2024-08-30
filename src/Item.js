@@ -14,6 +14,7 @@ function Item({ item, onItemClick, AddtoCart }) {
       marginLeft: '70px'
     }} 
     onClick={() => onItemClick(item)}>
+      {console.log(item.img)}
       <img src={item.img} alt={item.name} width="150px" height="150px"></img>
       {item.discount > 0 && (
         <div
@@ -37,11 +38,12 @@ function Item({ item, onItemClick, AddtoCart }) {
       <span>&nbsp;PKR {(item.price - item.discount).toLocaleString() }/-</span></p>
       : <p>PKR {(item.price - item.discount).toLocaleString()}/-</p>
       }
-      <button className="mini-add-to-cart" onClick={handleCartClick}>
+      {!item.out_of_stock ?(<button className="mini-add-to-cart" onClick={handleCartClick}>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-cart" viewBox="0 0 16 16">
           <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
         </svg>
-      </button>
+      </button>):(<p style={{color: "chocolate"}}>Out of stock</p>)
+      }
     </div>
   );
 }

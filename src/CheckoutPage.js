@@ -109,11 +109,11 @@ const CheckoutPage = ({ cart, clearCart, ResetToInitialState }) => {
         </tr>
         <tr class="total-row">
           <td colspan="3">Shipping Cost:</td>
-          <td>200</td>
+          <td>${totalAmount<3000?200:`Free Shipping`}</td>
         </tr>
         <tr class="total-row">
           <td colspan="3">Total Amount:</td>
-          <td>${totalAmount + 200}</td>
+          <td>${totalAmount < 3000? totalAmount +200:totalAmount}</td>
         </tr>
       </tbody>
     </table>
@@ -136,19 +136,19 @@ const CheckoutPage = ({ cart, clearCart, ResetToInitialState }) => {
       const order_id = await createOrder(shippingInfo, cart);
       console.log('Order created successfully with ID:', order_id);
       await emailjs.send(
-        'service_c2qkv1k', // First EmailJS service ID
-        'template_on3qsda', // First EmailJS template ID
+        'service_rkvby5u', // First EmailJS service ID
+        'template_kezs9lp', // First EmailJS template ID
         templateParams,
-        '_8nR_C2TJxGMGJK5O' // First EmailJS user ID
+        'x4ZjbsMi7cVZzYYJJ' // First EmailJS user ID
       );
       console.log('First email sent successfully');
   
       // Attempt to send the second email
       await emailjs.send(
-        'service_9555yvu', // Second EmailJS service ID
-        'template_36axzb2', // Second EmailJS template ID
+        'service_s0q5rzp', // Second EmailJS service ID
+        'template_ka6pe48', // Second EmailJS template ID
         templateParams,
-        'cThimeld8FthQtaja' // Second EmailJS user ID
+        'ZJYcFsBBuo8UGE-TM' // Second EmailJS user ID
       );
       console.log('Second email sent successfully');
   

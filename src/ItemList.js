@@ -46,6 +46,7 @@ function ItemList({ items, isSidebarOpen, onItemClick, AddtoCart, category}) {
       {sortedItems?.map((item) => (
         <Item key={item.id} item={item} onItemClick={onItemClick} AddtoCart={AddtoCart}/>
       ))}
+      {console.log(items)}
     </main>
       </>
   );

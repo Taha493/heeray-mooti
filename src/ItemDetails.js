@@ -37,8 +37,8 @@ const ItemDetails = ({ item, onBack, onAddToCart, items, onItemClick, isSidebarO
             <input type="number" value={quantity} disabled />
             <button onClick={handleIncrement} className='quantityButton'>+</button>
           </div>
-          <button className="addToCartButton" onClick={() => onAddToCart(item, quantity)}>
-            Add to Cart
+          <button className="addToCartButton" disabled ={item.out_of_stock} onClick={() => onAddToCart(item, quantity)}>
+           {item.out_of_stock?"Out of Stock": "Add to Cart"}
           </button>
         </div>
       </div>

@@ -4,8 +4,10 @@ body {
   margin: 0;
   /* font-family: Arial, sans-serif; */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  overflow-x: hidden;
+}
 
+html{
+  overflow-x: hidden;
 }
 
 .App {
@@ -17,7 +19,7 @@ body {
 .top-bar{
   z-index: 1001;
   text-align: center;
-  background-color: chocolate;
+  background-color: rgb(167, 24, 143);
   color: white;
   height: 30px;
   max-width: 100%;
@@ -41,11 +43,11 @@ body {
       transform: translateX(-180%);
   }
 }
-header {
+.header {
   display: flex;
   align-items: center;
-  background-color: antiquewhite;
-  color: chocolate;
+  background-color: rgb(231, 180, 243);
+  color: rgb(167, 24, 143);
   padding: 10px;
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -56,7 +58,7 @@ header {
   z-index: 1000;
 }
 
-header h1 {
+.header h1 {
   flex-grow: 1;
   margin: 0;
   font-size: 24px;
@@ -65,7 +67,7 @@ header h1 {
 .toggle-button {
   background: none;
   border: none;
-  color: chocolate;
+  color: rgb(167, 24, 143);
   font-size: 24px;
   cursor: pointer;
   margin-right: 10px;
@@ -79,7 +81,7 @@ header h1 {
 .cart-button{
     background: none;
     border: none;
-    color: chocolate;
+    color: rgb(167, 24, 143);
     font-size: 24px;
     cursor: pointer;
     margin-right: 50px;
@@ -94,7 +96,7 @@ header h1 {
   border: none;
   cursor: pointer;
   font-size: 20px;
-  color: chocolate;
+  color: rgb(167, 24, 143);
   transition: color 0.3s ease;
 }
 
@@ -114,7 +116,7 @@ header h1 {
 .item-container button{
     background: none;
     border: none;
-    color: chocolate;
+    color: rgb(167, 24, 143);
     font-size: 24px;
     cursor: pointer;
     margin-left: 15px;
@@ -122,8 +124,8 @@ header h1 {
 
 .cart-count-badge {
   position: absolute;
-  background-color: chocolate;
-  color: antiquewhite;
+  background-color: rgb(167, 24, 143);
+  color: rgb(231, 180, 243);
   border-radius: 50%;
   padding: 2px 6px;
   font-size: 12px;
@@ -135,7 +137,7 @@ header h1 {
 
 .sidebar {
   width: 230px;
-  background-color: #fde2c0;
+  background-color: rgb(231, 180, 243);
   position: fixed;
   top: 0;
   left: 0;
@@ -144,7 +146,7 @@ header h1 {
   transform: translateX(-250px); /* Start hidden off-screen */
   transition: transform 0.3s ease;
   user-select: none;
-  color: chocolate;
+  color: rgb(167, 24, 143);
   z-index: 1001;
 }
 
@@ -164,7 +166,7 @@ header h1 {
 }
 
 .sidebar li:hover {
-  background-color: rgb(241, 201, 148);
+  background-color: rgb(227, 135, 248);
   cursor: pointer;
   color: black;
 }
@@ -180,7 +182,7 @@ header h1 {
 
 .social-icons a {
   font-size: 24px;
-  color:chocolate;
+  color: rgb(167, 24, 143);
   transition: color 0.3s ease;
 }
 
@@ -196,7 +198,7 @@ main {
   padding-bottom: 60px; /* Ensure space for footer (adjust if needed) */
   min-height: 100vh;
   user-select: none;
-  overflow: scroll;
+  overflow-x: hidden;
 }
 
 main.shifted {
@@ -209,7 +211,7 @@ main.shifted {
   box-sizing: border-box;
   max-width: 25%; /* Adjusted margin */
   border-radius: 20px;
-  color: rgb(224, 170, 99);
+  color: rgb(167, 24, 143);
   display: flex;
   flex-direction: column;
   align-items: center; /* Center content */
@@ -244,7 +246,6 @@ p {
   font-size: 14px; /* Ensure readability */
 }
 
-
 .controls{
   align-self:center;
   margin-top: 100px;
@@ -263,6 +264,9 @@ p {
 }
 
 @media (max-width: 1200px) {
+  .body{
+    max-width: 1200px;
+  }
   .item-container {
     flex: 1 0 30%; /* 3 items per row */
     max-width: 100%;
@@ -281,6 +285,10 @@ p {
 }
 
 @media (max-width: 992px) {
+
+  .body{
+    max-width: 992px;
+  }
   .item-container {
     flex: 1 0 45%; /* 2 items per row */
     max-width: 100%;
@@ -326,6 +334,10 @@ p {
 }
 
 @media (max-width: 768px) {
+
+  .body{
+    max-width: 768px;
+  }
   .sidebar {
     width: 200px;
   }
@@ -358,6 +370,10 @@ p {
 }
 
 @media (max-width: 480px) {
+
+  .body{
+    max-width: 480px;
+  }
   header h1,
   footer p {
     font-size: 18px;
@@ -386,6 +402,10 @@ p {
 }
 
 @media (max-width: 360px) {
+
+  .body{
+    max-width: 360px;
+  }
   .toggle-button {
     font-size: 20px;
   }

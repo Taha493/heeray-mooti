@@ -2,7 +2,8 @@
     position: fixed;
     top: 10px; /* Moved lower */
     right: 10px; /* Moved to the left */
-    background-color: chocolate; /* Green */
+    background-color:rgb(167, 24, 143);
+
     color: white;
     padding: 16px;
     border-radius: 4px;

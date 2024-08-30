@@ -60,12 +60,12 @@ function Header({ toggleSidebar, openCart, cart, setCart, searchQuery, setSearch
             STANDARD DELIVERY CHARGES ARE PKR 200 ~ FREE DELIVERY ON ORDERS ABOVE PKR 3000
           </p>
         </div>
-      <header style={{ marginTop: headerMarginTop }}>
+      <header style={{ marginTop: headerMarginTop }} className='header'>
         <button className="toggle-button" onClick={toggleSidebar}>
           ☰
         </button>
 
-        <h1>H & Y Collections</h1>
+        <h1>HEERAY MOOTI</h1>
         <div className="search-cart-container">
           {!isSearchVisible && (
             <button className="iconButton" onClick={toggleSearch}>
