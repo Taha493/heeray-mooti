@@ -1,114 +1,59 @@
-import "./ItemDetails.css";
-import Item from "./Item";
+.notification {
+    position: fixed;
+    top: 10px; /* Moved lower */
+    right: 10px; /* Moved to the left */
+    background-color:rgb(214, 163, 9);
 
-const ItemDetails = ({
-  item,
-  onBack,
-  onAddToCart,
-  items,
-  onItemClick,
-  isSidebarOpen,
-  quantity,
-  setQuantity,
-}) => {
-  function handleDecrement() {
-    if (quantity === 1) return;
-    setQuantity((prevQuantity) => prevQuantity - 1);
+    color: rgb(32, 32, 32);
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    z-index: 1000; /* Ensure it appears above other content */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(-20px); /* Initial position */
+    z-index: 10000;
   }
-
-  function handleIncrement() {
-    setQuantity((prevQuantity) => prevQuantity + 1);
+  
+  .notification.show {
+    opacity: 1; /* Show notification */
+    transform: translateY(0); /* Move to original position */
   }
-
-  const relatedItems = items.filter(
-    (relatedItem) => relatedItem.id !== item.id
-  );
-
-  return (
-    <div className={isSidebarOpen ? "container-shifted" : "container"}>
-      <button className="backButton" onClick={onBack}>
-        &larr;
-      </button>
-      <div className="itemDetails">
-        <img
-          src={item.img}
-          alt={item.name}
-          className="itemImage"
-          width="600px"
-          height="300px"
-        />
-        <div className="itemInfo">
-          <h1>{item.name}</h1>
-          {item.description && <p>{item.description}</p>}
-          {item.discount > 0 ? (
-            <p>
-              Price:{" "}
-              <span
-                style={{
-                  textDecoration: "line-through",
-                  color: "rgb(214, 163, 9)",
-                  backgroundColor: "rgb(32, 32, 32)",
-                }}
-              >
-                PKR {item.price.toLocaleString()}{" "}
-              </span>
-              <span>
-                &nbsp;PKR {(item.price - item.discount).toLocaleString()}/-
-              </span>
-            </p>
-          ) : (
-            <p style={{ color: "rgb(214, 163, 9)" }}>
-              PKR {(item.price - item.discount).toLocaleString()}/-
-            </p>
-          )}
-          <p
-            style={{
-              color: "rgb(214, 163, 9)",
-              backgroundColor: "rgb(32, 32, 32)",
-            }}
-          >
-            Category: {item.category}
-          </p>
-          <div className="quantity">
-            <button onClick={handleDecrement} className="quantityButton">
-              -
-            </button>
-            <input
-              style={{ color: "rgb(214, 163, 9)" }}
-              type="number"
-              value={quantity}
-              disabled
-            />
-            <button onClick={handleIncrement} className="quantityButton">
-              +
-            </button>
-          </div>
-          <button
-            className="addToCartButton"
-            disabled={item.out_of_stock}
-            onClick={() => onAddToCart(item, quantity)}
-          >
-            {item.out_of_stock ? "Out of Stock" : "Add to Cart"}
-          </button>
-        </div>
-      </div>
-      {relatedItems.length > 0 && (
-        <div className="relatedItems">
-          <h2>Related Items</h2>
-          <div className="relatedItemsList">
-            {relatedItems.map((relatedItem) => (
-              <Item
-                key={relatedItem.id}
-                item={relatedItem}
-                onItemClick={() => onItemClick(relatedItem)}
-                AddtoCart={onAddToCart}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default ItemDetails;
+  
+  .notification::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: rgb(32, 32, 32);
+    animation: runLine 3s linear infinite; /* Adjust timing as needed */
+  }
+  
+  @keyframes runLine {
+    0% { left: 0; width: 0; }
+    50% { width: 100%; }
+    100% { left: 100%; width: 0; }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .notification {
+      top: 10px; /* Adjusted position */
+      right: 20px; /* Adjusted position */
+      padding: 12px;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .notification {
+      top: 10px; /* Adjusted position */
+      right: 15px; /* Adjusted position */
+      padding: 10px;
+      font-size: 12px;
+    }
+  }
+  
