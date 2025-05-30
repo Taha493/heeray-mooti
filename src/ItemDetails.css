@@ -9,7 +9,7 @@ footer {
     max-width: 100%;
     margin: 0 auto;
     padding: 20px;
-    background-color: rgb(231, 180, 243);
+    background-color: rgb(214, 163, 9);
     text-align: center;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -44,10 +44,11 @@ footer {
     align-self: flex-start;
     margin-bottom: 20px;
     padding: 10px 20px;
-    background-color: #ddd;
+    background-color: rgb(41, 40, 40);
     border: none;
     cursor: pointer;
     border-radius: 20px;
+    color: rgb(214, 163, 9);
 }
 
 .itemDetails {
@@ -77,7 +78,7 @@ footer {
 }
 .itemInfo h1 {
     margin-top: 0;
-    color: rgb(167, 24, 143);
+    color: rgb(214, 163, 9);
 }
 
 .quantity {
@@ -98,16 +99,17 @@ footer {
 .quantityButton {
     padding: 5px 10px;
     margin: 0 10px;
-    background-color: #ddd;
+    background-color: black;
     border: none;
     cursor: pointer;
     border-radius: 20px;
+    color: rgb(214, 163, 9);
 }
 
 .addToCartButton {
     padding: 10px 20px;
-    background-color: rgb(231, 180, 243);
-    color: rgb(167, 24, 143);
+    background-color: rgb(214, 163, 9);
+    color: rgb(32, 32, 32);
     border: none;
     cursor: pointer;
     border-radius: 20px;
@@ -115,7 +117,7 @@ footer {
 }
 
 .addToCartButton:hover{
-    background-color: rgb(190, 82, 214);
+    background-color: rgb(161, 123, 7);
 }
 
 .relatedItems {
@@ -125,6 +127,7 @@ footer {
 
 .relatedItems h2 {
     text-align: center;
+    color: rgb(214, 163, 9);
 }
 
 .relatedItemsList {
