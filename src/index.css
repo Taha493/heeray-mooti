@@ -4,6 +4,14 @@ body {
   margin: 0;
   /* font-family: Arial, sans-serif; */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgb(32, 32, 32);
+}
+
+@font-face {
+  font-family: 'urdu';
+  src: url('./urdu_font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 html{
@@ -19,8 +27,8 @@ html{
 .top-bar{
   z-index: 1001;
   text-align: center;
-  background-color: rgb(167, 24, 143);
-  color: white;
+  background-color: rgb(167, 127, 7);
+  color: rgb(41, 40, 40);
   height: 30px;
   max-width: 100%;
 }
@@ -46,8 +54,8 @@ html{
 .header {
   display: flex;
   align-items: center;
-  background-color: rgb(231, 180, 243);
-  color: rgb(167, 24, 143);
+  background-color: rgb(214, 163, 9);
+  color: rgb(41, 40, 40);
   padding: 10px;
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -62,12 +70,13 @@ html{
   flex-grow: 1;
   margin: 0;
   font-size: 24px;
+  font-family: 'urdu'
 }
 
 .toggle-button {
   background: none;
   border: none;
-  color: rgb(167, 24, 143);
+  color: rgb(41, 40, 40);
   font-size: 24px;
   cursor: pointer;
   margin-right: 10px;
@@ -81,7 +90,7 @@ html{
 .cart-button{
     background: none;
     border: none;
-    color: rgb(167, 24, 143);
+    color: rgb(41, 40, 40);
     font-size: 24px;
     cursor: pointer;
     margin-right: 50px;
@@ -96,7 +105,7 @@ html{
   border: none;
   cursor: pointer;
   font-size: 20px;
-  color: rgb(167, 24, 143);
+  color: rgb(41, 40, 40);
   transition: color 0.3s ease;
 }
 
@@ -116,7 +125,7 @@ html{
 .item-container button{
     background: none;
     border: none;
-    color: rgb(167, 24, 143);
+    color: rgb(214, 163, 9);
     font-size: 24px;
     cursor: pointer;
     margin-left: 15px;
@@ -124,8 +133,8 @@ html{
 
 .cart-count-badge {
   position: absolute;
-  background-color: rgb(167, 24, 143);
-  color: rgb(231, 180, 243);
+  background-color: black;
+  color: rgb(214, 163, 9);
   border-radius: 50%;
   padding: 2px 6px;
   font-size: 12px;
@@ -137,7 +146,7 @@ html{
 
 .sidebar {
   width: 230px;
-  background-color: rgb(231, 180, 243);
+  background-color:rgb(214, 163, 9);
   position: fixed;
   top: 0;
   left: 0;
@@ -146,7 +155,7 @@ html{
   transform: translateX(-250px); /* Start hidden off-screen */
   transition: transform 0.3s ease;
   user-select: none;
-  color: rgb(167, 24, 143);
+  color: rgb(41, 40, 40);
   z-index: 1001;
 }
 
@@ -161,12 +170,12 @@ html{
 
 .sidebar li {
   padding: 10px 0;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid rgb(41, 40, 40);
   text-align: center;
 }
 
 .sidebar li:hover {
-  background-color: rgb(227, 135, 248);
+  background-color: rgb(167, 127, 7);
   cursor: pointer;
   color: black;
 }
@@ -182,7 +191,7 @@ html{
 
 .social-icons a {
   font-size: 24px;
-  color: rgb(167, 24, 143);
+  color: rgb(41, 40, 40);
   transition: color 0.3s ease;
 }
 
@@ -199,6 +208,7 @@ main {
   min-height: 100vh;
   user-select: none;
   overflow-x: hidden;
+  justify-content: space-between; /* Better distribution */
 }
 
 main.shifted {
@@ -211,14 +221,14 @@ main.shifted {
   box-sizing: border-box;
   max-width: 25%; /* Adjusted margin */
   border-radius: 20px;
-  color: rgb(167, 24, 143);
+  color: rgb(214, 163, 9);
   display: flex;
   flex-direction: column;
   align-items: center; /* Center content */
 }
 .item-container:hover {
   cursor: pointer;
-  background-color: #e7e7e7;
+  background-color: rgb(41, 40, 40);
 }
 
 .item-container p {
@@ -232,6 +242,25 @@ main.shifted {
   border-radius: 20px;
   margin-top: 5px;
   margin-right: 20px;
+}
+
+/* Mobile-specific image sizing */
+@media (max-width: 768px) {
+  .item-container img {
+    height: 180px; /* Reduced height for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .item-container img {
+    height: 150px; /* Further reduced for smaller mobile screens */
+  }
+}
+
+@media (max-width: 360px) {
+  .item-container img {
+    height: 130px; /* Optimized for very small screens */
+  }
 }
 
 .item-container img,
@@ -349,8 +378,10 @@ p {
   }
 
   main {
-    padding: 10px;
+    padding: 5px;
     padding-bottom: 60px; /* Ensure space for footer (adjust if needed) */
+    justify-content: flex-start; /* Changed from space-between */
+    gap: 2%; /* Add gap between items */
   }
 
   header,
@@ -360,8 +391,12 @@ p {
   }
 
   .item-container {
-    flex: 1 0 100%; /* 1 item per row */
-    max-width: 100%;
+    flex: 0 0 49%; /* Force exactly 49% width */
+    width: 49% !important; /* Force width */
+    max-width: 49% !important; /* Force max-width */
+    margin: 0; /* Remove margin */
+    padding: 2px; /* Minimal padding */
+    box-sizing: border-box; /* Include padding in width calculation */
   }
 
   .social-icons{
@@ -394,9 +429,23 @@ p {
     margin-bottom: 80px;
   }
 
-  .item-container{
-    margin-left: 10px;
+  main {
+    padding: 3px; /* Minimal padding */
+    gap: 1%; /* Small gap */
+  }
 
+  .item-container{
+    flex: 0 0 49.5%; /* Force exactly 49.5% width */
+    width: 49.5% !important; /* Force width */
+    max-width: 49.5% !important; /* Force max-width */
+    margin: 0; /* No margin */
+    padding: 1px; /* Minimal padding */
+    box-sizing: border-box;
+  }
+
+  .item-container p, h3 {
+    font-size: 11px; /* Smaller text for mobile */
+    margin: 2px; /* Minimal margin */
   }
   
 }
@@ -424,8 +473,24 @@ p {
   .social-icons{
     margin-bottom: 80px;
   }
+
+  main {
+    padding: 2px; /* Minimal padding */
+    gap: 0.5%; /* Very small gap */
+  }
+
   .item-container{
-    margin-left: 10px;
+    flex: 0 0 49.75%; /* Force exactly 49.75% width */
+    width: 49.75% !important; /* Force width */
+    max-width: 49.75% !important; /* Force max-width */
+    margin: 0; /* No margin */
+    padding: 1px; /* Minimal padding */
+    box-sizing: border-box;
+  }
+
+  .item-container p, h3 {
+    font-size: 10px; /* Very small text for tiny screens */
+    margin: 1px; /* Minimal margin */
   }
 }
 
@@ -495,8 +560,10 @@ p {
 
 @media (max-width: 768px) {
   .item-container {
-    flex: 1 0 100%; /* 1 item per row */
-    max-width: calc(100% - 20px); /* Full width */
+    flex: 0 0 49% !important; /* Force exactly 49% width */
+    width: 49% !important; /* Force width */
+    max-width: 49% !important; /* Force max-width */
+    margin: 0 !important; /* Remove all margins */
   }
 
   .item-container img {
@@ -504,13 +571,18 @@ p {
   }
 
   .item-container p, h3 {
-    font-size: 16px; /* Larger text for better readability */
+    font-size: 12px; /* Readable text size */
   }
 }
 
 @media (max-width: 480px) {
   .item-container {
-    margin: 0; /* Remove margin */
+    flex: 0 0 55.5% !important; /* Force exactly 49.5% width */
+    width: 35.5% !important; /* Force width */
+    max-width: 30.5% !important; /* Force max-width */
+    margin: 0 !important; /* Remove all margins */
+    margin-left: 70px !important;
+
   }
 
   .item-container img {
@@ -518,6 +590,27 @@ p {
   }
 
   .item-container p, h3 {
-    font-size: 18px; /* Larger text for better readability */
+    font-size: 11px; /* Adjusted for smaller screens but still readable */
+  }
+}
+
+/* Add specific rule for iPhone SE and similar devices */
+@media (max-width: 375px) {
+  main {
+    padding: 2px;
+    gap: 1%;
+  }
+  
+  .item-container {
+    flex: 0 0 49.75% !important; /* Force exactly 49.75% width */
+    width: 49.75% !important; /* Force width */
+    max-width: 49.75% !important; /* Force max-width */
+    margin: 0 !important; /* Remove all margins */
+    padding: 1px !important;
+  }
+
+  .item-container p, h3 {
+    font-size: 10px;
+    margin: 1px;
   }
 }
