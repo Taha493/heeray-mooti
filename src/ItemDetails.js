@@ -1,8 +1,16 @@
-import './ItemDetails.css';
-import Item from './Item';
+import "./ItemDetails.css";
+import Item from "./Item";
 
-const ItemDetails = ({ item, onBack, onAddToCart, items, onItemClick, isSidebarOpen, quantity, setQuantity }) => {
-
+const ItemDetails = ({
+  item,
+  onBack,
+  onAddToCart,
+  items,
+  onItemClick,
+  isSidebarOpen,
+  quantity,
+  setQuantity,
+}) => {
   function handleDecrement() {
     if (quantity === 1) return;
     setQuantity((prevQuantity) => prevQuantity - 1);
@@ -12,7 +20,9 @@ const ItemDetails = ({ item, onBack, onAddToCart, items, onItemClick, isSidebarO
     setQuantity((prevQuantity) => prevQuantity + 1);
   }
 
-  const relatedItems = items.filter(relatedItem => relatedItem.id !== item.id);
+  const relatedItems = items.filter(
+    (relatedItem) => relatedItem.id !== item.id
+  );
 
   return (
     <div className={isSidebarOpen ? "container-shifted" : "container"}>
@@ -20,25 +30,65 @@ const ItemDetails = ({ item, onBack, onAddToCart, items, onItemClick, isSidebarO
         &larr;
       </button>
       <div className="itemDetails">
-        <img src={item.img} alt={item.name} className="itemImage" width="600px" height="300px" />
+        <img
+          src={item.img}
+          alt={item.name}
+          className="itemImage"
+          width="600px"
+          height="300px"
+        />
         <div className="itemInfo">
           <h1>{item.name}</h1>
           {item.description && <p>{item.description}</p>}
-          {
-        item.discount > 0?
-        <p>Price: <span style={{textDecoration: "line-through"}}>PKR {item.price.toLocaleString()} </span>
-      <span>&nbsp;PKR {(item.price - item.discount).toLocaleString() }/-</span></p>
-      : <p>PKR {(item.price - item.discount).toLocaleString()}/-</p>
-      
-      }
-          <p>Category: {item.category}</p>
+          {item.discount > 0 ? (
+            <p>
+              Price:{" "}
+              <span
+                style={{
+                  textDecoration: "line-through",
+                  color: "rgb(214, 163, 9)",
+                  backgroundColor: "rgb(32, 32, 32)",
+                }}
+              >
+                PKR {item.price.toLocaleString()}{" "}
+              </span>
+              <span>
+                &nbsp;PKR {(item.price - item.discount).toLocaleString()}/-
+              </span>
+            </p>
+          ) : (
+            <p style={{ color: "rgb(214, 163, 9)" }}>
+              PKR {(item.price - item.discount).toLocaleString()}/-
+            </p>
+          )}
+          <p
+            style={{
+              color: "rgb(214, 163, 9)",
+              backgroundColor: "rgb(32, 32, 32)",
+            }}
+          >
+            Category: {item.category}
+          </p>
           <div className="quantity">
-            <button onClick={handleDecrement} className='quantityButton'>-</button>
-            <input type="number" value={quantity} disabled />
-            <button onClick={handleIncrement} className='quantityButton'>+</button>
+            <button onClick={handleDecrement} className="quantityButton">
+              -
+            </button>
+            <input
+              style={{ color: "rgb(214, 163, 9)" }}
+              type="number"
+              value={quantity}
+              disabled
+            />
+            <button onClick={handleIncrement} className="quantityButton">
+              +
+            </button>
           </div>
-          <button className="addToCartButton" disabled ={item.out_of_stock} onClick={() => onAddToCart(item, quantity)}>
-           {item.out_of_stock?"Out of Stock": "Add to Cart"}
+          <button
+            className="addToCartButton"
+            disabled={item.out_of_stock}
+            onClick={() => onAddToCart(item, quantity)}
+          >
+            {item.out_of_stock ? "Out of Stock" : "Add to Cart"}
           </button>
         </div>
       </div>
