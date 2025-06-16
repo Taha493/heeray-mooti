@@ -20,6 +20,7 @@ function Sidebar({ isOpen, toggleSidebar, onCategorySelect }) {
         <li onClick={() => handleCategoryClick('Premade Ring')}>Premade Rings</li>
         <li onClick={() => handleCategoryClick('Premade Earring')}>Premade Earrings</li>
         <li onClick={() => handleCategoryClick('Premade Chain')}>Premade Chains</li>
+        <li onClick={() => handleCategoryClick("Resin Jewellery")}>Resin Jewellery</li>
 
 
       </ul>
