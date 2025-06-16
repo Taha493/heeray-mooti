@@ -178,7 +178,7 @@
 //       category: "Set",
 //      img: "https://drive.google.com/thumbnail?id=1PsjpO2VtEe3kW6JJE3ZKMgtbj3XJHTGt&sz=w1000"
 //     }
-//     , 
+//     ,
 //     {
 //       name: "King Baby Gold Chain",
 //       id: Math.floor(Math.random()*10000)+1,
@@ -191,28 +191,27 @@
 
 import supabase from "./supabase";
 
-async function getItems(){
-let { data: Items, error } = await supabase
-  .from('Items')
-  .select('*')
-  // .order('category')
-  // .order('price');  // Then sort by price within each category
+async function getItems() {
+  let { data: Items, error } = await supabase.from("Items").select("*");
 
-if(error){
-  console.error("Unable to fetch items....");
-}
-
-Items.sort((a, b) => {
-  if (a.category === b.category) {
-    return a.price - b.price;  // Sort by price if categories are the same
+  if (error) {
+    console.error("Unable to fetch items....");
+    return [];
   }
-  return a.category.localeCompare(b.category);  // Sort by category
-});
 
-console.log(Items);
+  Items.sort((a, b) => {
+    // Move 'Resin Jewellery' to the top
+    if (a.category === "Resin Jewellery" && b.category !== "Resin Jewellery")
+      return -1;
+    if (a.category !== "Resin Jewellery" && b.category === "Resin Jewellery")
+      return 1;
 
-return Items;
+    // If both are 'Resin Jewellery' or neither is, sort alphabetically by category
+    return a.category.localeCompare(b.category);
+  });
+
+  console.log(Items);
+  return Items;
 }
-
 
 export default getItems;
