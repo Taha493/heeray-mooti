@@ -35,9 +35,7 @@ function Sidebar({ isOpen, toggleSidebar, onCategorySelect }) {
         <li onClick={() => handleCategoryClick("Resin Jewellery")}>
           Resin Jewellery
         </li>
-        <li onClick={() => handleCategoryClick("Resin Jewellery")}>
-          Gift Boxes
-        </li>
+        <li onClick={() => handleCategoryClick("Git Boxes")}>Gift Boxes</li>
       </ul>
       <div className="social-icons">
         <a
