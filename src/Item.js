@@ -33,7 +33,7 @@ function Item({ item, onItemClick, AddtoCart }) {
         </div>
       )}
       <h3>{item.name}</h3>
-      {item.description && <p>{item.description}</p>}
+      // {item.description && <p>{item.description}</p>}
       {item.discount > 0 ? (
         <p>
           <span
