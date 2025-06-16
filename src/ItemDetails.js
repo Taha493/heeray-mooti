@@ -39,7 +39,16 @@ const ItemDetails = ({
         />
         <div className="itemInfo">
           <h1>{item.name}</h1>
-          {item.description && <p>{item.description}</p>}
+          {item.description && (
+            <p
+              style={{
+                color: "rgb(214, 163, 9)",
+                backgroundColor: "rgb(32, 32, 32)",
+              }}
+            >
+              {item.description}
+            </p>
+          )}
           {item.discount > 0 ? (
             <p>
               Price:{" "}
