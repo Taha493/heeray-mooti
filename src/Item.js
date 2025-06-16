@@ -33,7 +33,16 @@ function Item({ item, onItemClick, AddtoCart }) {
         </div>
       )}
       <h3>{item.name}</h3>
-      // {item.description && <p>{item.description}</p>}
+      {/* {item.description && (
+        <p
+          style={{
+            color: "rgb(214, 163, 9)",
+            backgroundColor: "rgb(32, 32, 32)",
+          }}
+        >
+          {item.description}
+        </p>
+      )} */}
       {item.discount > 0 ? (
         <p>
           <span
