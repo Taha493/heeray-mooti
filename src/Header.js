@@ -65,7 +65,7 @@ function Header({
     <>
       <div className="top-bar">
         <p className="top-bar-content">
-          STANDARD DELIVERY CHARGES ARE PKR 200 ~ FREE DELIVERY ON ORDERS ABOVE
+          STANDARD DELIVERY CHARGES ARE PKR 250 ~ FREE DELIVERY ON ORDERS ABOVE
           PKR 3000
         </p>
       </div>
