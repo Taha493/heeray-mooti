@@ -47,7 +47,7 @@ function Sidebar({ isOpen, toggleSidebar, onCategorySelect }) {
           <FaInstagram />
         </a>
         <a
-          href="https://wa.me/+923025975556"
+          href="https://wa.me/+923359420926"
           target="_blank"
           rel="noopener noreferrer"
           className="iconLink"
